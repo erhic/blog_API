@@ -1,3 +1,3 @@
 export BLOG_API_KEY=
 
-python3 manage.py server
+python3 app.py server

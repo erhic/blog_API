@@ -6,6 +6,6 @@ quotes=Blueprint('quotes',__name__,template_folder='templates',static_folder='st
 
 
 
-@quotes.route('/quotes')
+@quotes.route('/')
 def main_index():
     return 'blueprint for qoutes'

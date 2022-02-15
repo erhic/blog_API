@@ -1,0 +1,40 @@
+{% extends 'base.html'%} {% block content %}
+<div class="container ">
+    <div class="row">
+
+        <div class="col-md-4 mx-auto shadow p-2 mb-4 py-4 mt-5 bg-body rounded">
+            <!--Flash message -->
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button> {{ message }}
+            </div>
+            <div class="col-md-5 mx-auto">
+                {% endfor %}
+                <!-- Login form -->
+                <p class="fw-bold fs-4 text-center text-primary">Login</p>
+                <form action="" method="POST" class="needs-validation" novalidate id="loginform">
+                    {{form.hidden_tag()}}
+                    <div class="form-group mx-4">
+                        {% if form.email.errors %} {{form.email.label}}{{form.email(class="form-control is-invalid")}} {% for error in form.email.errors %}
+                        <div class="invalid-feedback ">
+                            {{error}}
+                        </div>
+                        {% endfor %} {% else %} {{form.email.label}}{{form.email(class="form-control")}} {% endif %}
+                    </div>
+                    <div class="form-group mt-2 mx-4">
+                        {% if form.password.errors %} {{form.password.label}}{{form.password(class="form-control is-invalid")}} {% for error in form.password.errors %}
+                        <div class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                        {% endfor %} {% else %} {{form.password.label}}{{form.password(class="form-control")}} {% endif %}
+                    </div>
+                    <div class="form-group mx-4">
+                        {{form.submit(class="btn btn-primary mt-3")}}
+                    </div>
+                </form>
+                <p class="text-center mt-2"> Don't have an account? <a href="{{url_for('register')}}">Sign up here</a></p>
+            </div>
+        </div>
+    </div>
+
+    {% endblock%}

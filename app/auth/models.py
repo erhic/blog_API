@@ -1,6 +1,6 @@
-from extension import db
+from ..extension import db
 from flask_login import login_manager,UserMixin
-from loginconfig import login_manager
+from ..loginconfig import login_manager
 from ..quotes.model import Quotes
 
 @login_manager.user_loader

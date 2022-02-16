@@ -1,10 +1,8 @@
 import os
-
+os.urandom(24)
 
 class Config:
-  
-    SECRET_KEY = os.urandom(32)
-    
+    SECRET_KEY = 'thisisakey'
     SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:1234@localhost/blog'
 
 
@@ -16,8 +14,8 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
-    SUBJECT_PREFIX = 'Pitch'
-    SENDER_EMAIL = 'hngug@gmail.com'
+    SUBJECT_PREFIX = 'Post'
+    SENDER_EMAIL = 'hing@gmail.com'
 
     @staticmethod
     def init_app(app):
@@ -29,8 +27,9 @@ class ProdConfig(Config):
     Production  configuration child class
     Args:
         Config: The parent configuration class with General configuration settings
-    '''
+    # '''
     SQLALCHEMY_DATABASE_URI =os.environ.get('SQLALCHEMY_DATABASE_URI')
+    
     # SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:1234@localhost/blog'
 
 # class TestConfig(Config):
@@ -43,7 +42,7 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    # SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:1234@localhost/pitches'
+    # SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:1234@localhost/blog'
 
     DEBUG = True
 

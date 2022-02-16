@@ -1,12 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-light  py-3 fs-5 bg-light">
+<nav class="navbar navbar-expand-lg navbar-light  py-3 fs-5 bg-success">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">BlogZone</a>
+        <a class="navbar-brand" href="#">QuoteZone</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
         <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
+                <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Home</a>
                 <a class="nav-link active" aria-current="page" href="{{url_for('about')}}">About</a>
 
 
@@ -17,17 +17,20 @@
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Pitches
+                          Quotes
                         </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{{url_for('post')}}">Create Post</a></li>
-                                <li><a class="dropdown-item" href="{{url_for('index')}}">View Post</a></li>
+                                <li><a class="dropdown-item" href="{{url_for('post')}}">Create Quote</a></li>
+                                <li><a class="dropdown-item" href="{{url_for('home')}}">View Post</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
 
-
+                <a class="nav-item nav-link" href="{{url_for('home')}}">Profile</a>
+                <a class="nav-item nav-link" href="{{url_for('logout')}}">Log Out</a> {% else %}
+                <a class="nav-item nav-link" href="{{url_for('register')}}">Sign Up</a>
+                <a class="nav-item nav-link" href="{{url_for('login')}}">Login</a> {% endif %}
 
 
             </div>

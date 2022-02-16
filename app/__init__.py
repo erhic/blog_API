@@ -1,5 +1,5 @@
 from flask import Flask
-from .config import DevConfig
+from .config import ProdConfig
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_mail import Mail
@@ -22,7 +22,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
 # Creating the app configurations
-app.config.from_object(DevConfig)
+app.config.from_object(ProdConfig)
 
 
 

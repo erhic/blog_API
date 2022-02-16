@@ -8,7 +8,8 @@ from werkzeug.security import generate_password_hash,check_password_hash #used t
 from flask_login import login_required,logout_user,login_user,current_user
 from app import forms
 from .models import User,Post
-from .request import get_quote
+import requests
+import json
 
 
 
@@ -16,8 +17,17 @@ from .request import get_quote
 def home():
     db.create_all()
     posts=Post.query.all()
-    quote=get_quote()
-    return  render_template('home.html',post=posts,quote=quote)
+    quote=requests.get('http://quotes.stormconsultancy.co.uk/random.json')
+    print(quote.content)
+    randomquote=json.loads(quote.content)
+    return  render_template('home.html',post=posts,quote=quote,data=randomquote['author'])
+
+@app.route('/mostpopular',methods=['GET', 'POST'])
+def popular():
+    quote=requests.get('http://quotes.stormconsultancy.co.uk/popular.json')
+    print(quote.content)
+    data=json.loads(quote.content)
+    return  render_template('mostpopular.html',quote=quote,data=data)
 
 
  

@@ -30,13 +30,6 @@ class Post(db.Model):
     datetime = db.Column(db.DateTime(200), default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     
-class Quote:
-    """
-    class for quotes consumed from API
-    """
-    def _init_(self, author, quote):
-        self.author = author
-        self.quote = quote
-    
+
     
     

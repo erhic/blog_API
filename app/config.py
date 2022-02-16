@@ -3,7 +3,7 @@ os.urandom(24)
 
 class Config:
     SECRET_KEY = 'thisisakey'
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:1234@localhost/blog'
+    # SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:1234@localhost/blog'
 
 
     UPLOADED_PHOTOS_DEST ='app/static/photos'

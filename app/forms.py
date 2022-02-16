@@ -1,6 +1,6 @@
 # importing  the flask module that are used while creating a form
 from flask_wtf import FlaskForm #the form from flask
-from wtforms import StringField,BooleanField,PasswordField,SubmitField,ValidationError,TextAreaField,SelectField#the field class that we are going to use/import from the flask package wtform module module
+from wtforms import StringField,BooleanField,PasswordField,EmailField,SubmitField,ValidationError,TextAreaField,SelectField#the field class that we are going to use/import from the flask package wtform module module
 from wtforms.validators import DataRequired,Email,EqualTo,Length,Regexp,Optional
 from .models import User,Post
 
@@ -58,6 +58,14 @@ class PostForm(FlaskForm):
     title = StringField('Quote Title',validators=[DataRequired()])
     post= TextAreaField('Quote',validators=[DataRequired()])
     submit = SubmitField('Post')
+    
+    
+class EmailForm(FlaskForm):
+    '''
+    class to create quotes   
+    '''
+    post= EmailField('Enter your details here',validators=[DataRequired()])
+    submit = SubmitField('Subscribe')
     
     
     

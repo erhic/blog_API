@@ -1,31 +1,39 @@
-import email
-from app import app,db
-from .models import User
-from .forms import LoginForm,RegisterForm,PostForm
+import requests
+import json
+from flask_mail import Message
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask import render_template,redirect,url_for,flash,request,abort
 from werkzeug.security import generate_password_hash,check_password_hash #used to hash password to unreadable string
 from flask_login import login_required,logout_user,login_user,current_user
-from app import forms
+from .forms import LoginForm,RegisterForm,PostForm,EmailForm
+from app import app,db,mail
 from .models import User,Post
-import requests
-import json
 
 
-
+def subscribition(email):
+    msg=Message('@noReply',sender='eric.gichovi@student.moringaschool.com',recipients=[email])
+    msg.body=f'''You have successfully subscribed to our news letter.
+If you didn't subscibe ,kindly ignore message.
+    
+    '''
+    mail.send(msg)
 @app.route('/',methods=['GET', 'POST'])
 def home():
     db.create_all()
     posts=Post.query.all()
     quote=requests.get('http://quotes.stormconsultancy.co.uk/random.json')
-    print(quote.content)
     randomquote=json.loads(quote.content)
-    return  render_template('home.html',post=posts,quote=quote,data=randomquote['author'])
+    form=EmailForm()
+    if form.validate_on_submit():
+        email=form.post.data
+        subscribition(email)
+        return redirect (url_for('home'))
+    return  render_template('home.html',post=posts,quote=quote,datas=randomquote,form=form)
 
 @app.route('/mostpopular',methods=['GET', 'POST'])
 def popular():
     quote=requests.get('http://quotes.stormconsultancy.co.uk/popular.json')
-    print(quote.content)
+  
     data=json.loads(quote.content)
     return  render_template('mostpopular.html',quote=quote,data=data)
 
@@ -46,6 +54,7 @@ def login():
     return render_template("login.html", form=form)
 
 
+    
 
 
 
@@ -97,3 +106,4 @@ def logout():
     logout_user()
     return redirect(url_for("home"))
    
+

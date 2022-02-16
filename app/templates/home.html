@@ -15,18 +15,37 @@
                 </div>
             </div>
         </div>
-        {%endfor%} {% for datas in data %}
+        {%endfor%}
         <div class="col-md-4 mx-auto">
             <div class="card shadow p-2">
                 <h5 class="card-title bg-light py-2 text-center "></h5>
                 <div class="card-body">
-                    <h5 class="card-title">Author:{{datas['author']}} </h5>
-                    <p class="card-text text-center py-2"><i>"{{datas['quote']}}"</i></p>
+                    <h5 class="card-title">Author:{{datas.author}} </h5>
+                    <p class="card-text text-center py-2"><i>"{{datas.quote}}"</i></p>
 
                 </div>
             </div>
         </div>
-        {%endfor%}
+        <div class="col-md-10 mx-auto">
+
+            <!-- Login form -->
+            <p class="fw-bold fs-4 text-center text-primary">Subscribe</p>
+            <form action="" method="POST" style="max-width: 550px;margin:auto" class="needs-validation" novalidate id="loginform">
+                {{form.hidden_tag()}}
+                <div class="form-group mx-4">
+                    {% if form.post.errors %} {{form.post.label}}{{form.post(class="form-control is-invalid")}} {% for error in form.post.errors %}
+                    <div class="invalid-feedback ">
+                        {{error}}
+                    </div>
+                    {% endfor %} {% else %} {{form.post.label}}{{form.post(class="form-control")}} {% endif %}
+                </div>
+
+                <div class="form-group mx-4 ">
+                    <p class="text-center"> {{form.submit(class="btn btn-primary mt-3")}}</p>
+                </div>
+            </form>
+        </div>
+
     </div>
 </div>
 {% endblock%}

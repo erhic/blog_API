@@ -11,19 +11,13 @@ login_manager = LoginManager(app)
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'login'
 
+# Creating the app configurations
+app.config.from_object(ProdConfig)
+
 
 db = SQLAlchemy(app)
 mail = Mail(app)
 Migrate(app,db)
 
-
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# app.config['SQLALCHEMY_DATABASE_URI']
-
-
-# Creating the app configurations
-app.config.from_object(ProdConfig)
-
-
-
+# app.config[''] = False
 from app import views

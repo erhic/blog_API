@@ -30,12 +30,13 @@
             </div>
         </div>
         {%endfor%}
-
-        <div class="col-md-10 mt-5 mx-auto">
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-10 mt-5 mx-auto shadow p-2 mb-5">
 
             <!-- Login form -->
             <p class="fw-bold fs-4 text-center text-primary">Subscribe</p>
-            <form action="" method="POST" style="max-width: 550px;margin:auto" class="needs-validation" novalidate id="loginform">
+            <form action="" method="POST" style="max-width: 550px;margin:auto" class="needs-validation p-3" novalidate id="loginform">
                 {{form.hidden_tag()}}
                 <div class="form-group mx-4">
                     {% if form.post.errors %} {{form.post.label}}{{form.post(class="form-control is-invalid")}} {% for error in form.post.errors %}
@@ -49,8 +50,9 @@
                     <p class="text-center"> {{form.submit(class="btn btn-primary mt-3")}}</p>
                 </div>
             </form>
-        </div>
 
+
+        </div>
     </div>
 </div>
 {% endblock%}

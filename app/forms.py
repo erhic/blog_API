@@ -64,7 +64,7 @@ class EmailForm(FlaskForm):
     '''
     class to create quotes   
     '''
-    post= EmailField('Enter your details here',validators=[DataRequired()])
+    post= EmailField('Enter your emails here',validators=[DataRequired()])
     submit = SubmitField('Subscribe')
     
     

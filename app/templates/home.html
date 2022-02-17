@@ -1,24 +1,24 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col-md-4 mx-auto">
-            <div class="col-md-4 mx-auto">
-                <div class="card shadow p-2">
-                    <h4 class="card-title bg-light py-2 text-center ">Quote of the Day</h4>
-                    <div class="card-body">
-                        <h5 class="card-title">Author:{{datas.author}} </h5>
-                        <p class="card-text text-center py-2"><i>"{{datas.quote}}"</i></p>
+    <div class="row mt-4">
 
-                    </div>
+        <div class="col-md-5 mx-auto">
+            <div class="card shadow p-2">
+                <h4 class="card-title bg-light py-2 text-center ">Quote of the Day</h4>
+                <div class="card-body">
+                    <h5 class="card-title">Author:{{datas.author}} </h5>
+                    <p class="card-text text-center py-2"><i>"{{datas.quote}}"</i></p>
+
                 </div>
             </div>
         </div>
+
     </div>
     <div class="row mt-4">
 
         {%for post in post %}
 
-        <div class="col-md-4 mx-auto">
+        <div class="col-md-4 mt-3 mx-auto">
             <div class="card shadow p-2">
                 <h5 class="card-title bg-light py-2 text-center ">{{post.title}}</h5>
                 <div class="card-body">
